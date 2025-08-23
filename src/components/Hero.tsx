@@ -10,12 +10,8 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-snug"
-      >
-        Discover Your Perfect{" "}
-        <span className="bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-600 bg-clip-text text-transparent">
-          University
-        </span>
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-snug bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-600 bg-clip-text text-transparent">
+          Discover Your Perfect University
       </motion.h1>
 
       {/* Subtext */}

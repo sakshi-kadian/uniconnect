@@ -25,8 +25,8 @@ export default function SearchBar({
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const options = [
-    { value: "asc", label: "Lower Ranked First", color: "bg-green-300" }, // softer green
-    { value: "desc", label: "Higher Ranked First", color: "bg-blue-300" }, // softer blue
+    { value: "asc", label: "Higher Ranked First", color: "bg-green-300" }, 
+    { value: "desc", label: "Lower Ranked First", color: "bg-blue-300" }, 
   ];
 
   const selected = options.find((o) => o.value === sortOrder)!;

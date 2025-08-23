@@ -23,7 +23,7 @@ export default function Home() {
         setLoading(true);
         setError(null);
 
-        // Case 1: no search → top 12 by rank
+        // Case 1: no search shows top 12 by rank
         if (!searchTerm) {
           const { data, error } = await supabase
             .from("universities")
@@ -36,7 +36,7 @@ export default function Home() {
           return;
         }
 
-        // Case 2: too short search → ignore
+        // Case 2: too short search will ignore
         if (searchTerm.length < 2) {
           setUniversities([]);
           return;

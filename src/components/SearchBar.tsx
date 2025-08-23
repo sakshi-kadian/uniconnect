@@ -209,7 +209,7 @@ export default function SearchBar({
         <span>
           Ranking:{" "}
           <span className="font-semibold text-black">
-            {sortOrder === "asc" ? "Lower First" : "Higher First"}
+            {sortOrder === "asc" ? "Higher First" : "Lower First"}
           </span>
         </span>
       </p>

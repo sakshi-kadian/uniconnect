@@ -1,4 +1,5 @@
 "use client";
+
 import { GraduationCap, Globe, Search } from "lucide-react";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 
@@ -22,11 +23,12 @@ export default function SearchBar({
   onSearch,
 }: SearchBarProps) {
   const [open, setOpen] = useState(false);
+  const [focused, setFocused] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const options = [
-    { value: "asc", label: "Higher Ranked First", color: "bg-green-300" }, 
-    { value: "desc", label: "Lower Ranked First", color: "bg-blue-300" }, 
+    { value: "asc", label: "Higher Ranked First", color: "bg-green-300" },
+    { value: "desc", label: "Lower Ranked First", color: "bg-blue-300" },
   ];
 
   const selected = options.find((o) => o.value === sortOrder)!;
@@ -112,28 +114,25 @@ export default function SearchBar({
         <input
           type="text"
           value={value}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            onChange(e.target.value)
-          }
+          onChange={(e) => onChange(e.target.value)}
           onKeyDown={(e) => {
-            if (e.key === "Enter" && onSearch) onSearch();
+            if (e.key === "Enter") {
+              if (onSearch) onSearch();
+              e.currentTarget.blur(); // Remove focus to stop glow
+            }
           }}
           placeholder={
             mode === "name"
               ? "Search by University name..."
               : "Search by Country name..."
           }
-          className="w-full pl-9 sm:pl-10 pr-4 py-2 sm:py-3 rounded-xl border border-gray-300 text-black font-medium shadow-sm transition-all duration-300 focus:outline-none"
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          className={`w-full pl-9 sm:pl-10 pr-4 py-2 sm:py-3 rounded-xl border border-gray-300 text-black font-medium shadow-sm transition-all duration-300 focus:outline-none`}
           style={{
-            boxShadow: "inset 0 0 0 1.5px rgba(0,0,0,0.08)",
-          }}
-          onFocus={(e) => {
-            e.currentTarget.style.boxShadow =
-              "0 0 0 2px rgba(56,189,248,0.25), 0 0 10px rgba(34,197,94,0.25)";
-          }}
-          onBlur={(e) => {
-            e.currentTarget.style.boxShadow =
-              "inset 0 0 0 1.5px rgba(0,0,0,0.08)";
+            boxShadow: focused
+              ? "0 0 0 2px rgba(56,189,248,0.25), 0 0 10px rgba(34,197,94,0.25)"
+              : "inset 0 0 0 1.5px rgba(0,0,0,0.08)",
           }}
         />
       </div>
@@ -143,22 +142,10 @@ export default function SearchBar({
         <label className="block text-sm font-medium text-black mb-2">
           Global Ranking Order
         </label>
-
         <div className="relative w-full">
           <button
             onClick={() => setOpen(!open)}
             className="w-full flex items-center justify-between px-4 sm:px-5 py-2 sm:py-3 border border-gray-300 rounded-2xl shadow-sm focus:outline-none transition-all duration-300 hover:shadow-md"
-            style={{
-              boxShadow: "inset 0 0 0 1.5px rgba(0,0,0,0.08)",
-            }}
-            onFocus={(e) => {
-              e.currentTarget.style.boxShadow =
-                "0 0 0 2px rgba(56,189,248,0.25), 0 0 10px rgba(34,197,94,0.25)";
-            }}
-            onBlur={(e) => {
-              e.currentTarget.style.boxShadow =
-                "inset 0 0 0 1.5px rgba(0,0,0,0.08)";
-            }}
           >
             <div className="flex items-center gap-2 text-black">
               <span className={`w-2 h-2 rounded-full ${selected.color}`}></span>

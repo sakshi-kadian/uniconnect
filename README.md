@@ -1,1 +1,1 @@
-# UniVerse – University Search Platform
+# UniAtlas – University Search Platform

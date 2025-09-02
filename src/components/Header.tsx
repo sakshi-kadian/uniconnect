@@ -27,7 +27,7 @@ export default function Navbar() {
             </motion.div>
 
             <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-600 bg-clip-text text-transparent">
-              UniConnect
+              UniVerse
             </h1>
           </a>
         </div>

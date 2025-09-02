@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header"
 import Hero from "@/components/Hero";
 import SearchBar from "@/components/SearchBar";
 import UniversityList, { University } from "@/components/UniversityList";
@@ -73,7 +73,7 @@ export default function Home() {
 
   return (
     <main className="bg-gray-50 min-h-screen flex flex-col">
-      <Navbar />
+      <Header />
 
 
       <section className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12">

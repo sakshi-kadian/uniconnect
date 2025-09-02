@@ -2,6 +2,7 @@
 
 import { GraduationCap, Globe, Search } from "lucide-react";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion"; 
 
 interface SearchBarProps {
   value: string;
@@ -56,7 +57,12 @@ export default function SearchBar({
   }, []);
 
   return (
-    <div className="w-full bg-white shadow-md rounded-2xl border border-gray-200 p-4 sm:p-6 transition-all duration-300 hover:shadow-xl">
+    <motion.div
+      initial={{ opacity: 0, y: 50 }} // start hidden, below
+      animate={{ opacity: 1, y: 0 }} // slide up into place
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="w-full bg-white shadow-md rounded-2xl border border-gray-200 p-4 sm:p-6"
+    >
       {/* Heading */}
       <h2 className="text-base sm:text-lg font-semibold text-gray-800 mb-1 sm:mb-2">
         Search Parameters
@@ -118,7 +124,7 @@ export default function SearchBar({
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               if (onSearch) onSearch();
-              e.currentTarget.blur(); // Remove focus to stop glow
+              e.currentTarget.blur();
             }
           }}
           placeholder={
@@ -200,6 +206,6 @@ export default function SearchBar({
           </span>
         </span>
       </p>
-    </div>
+    </motion.div>
   );
 }

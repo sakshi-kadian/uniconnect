@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-14 sm:h-16 justify-center">
           <p className="text-gray-800 text-sm">
-            &copy; {new Date().getFullYear()} UniVerse. All Rights Reserved.
+            &copy; {new Date().getFullYear()} UniAtlas. All Rights Reserved.
           </p>
         </div>
       </div>

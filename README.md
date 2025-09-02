@@ -1,1 +1,1 @@
-# UniConnect – University Search Platform
+# UniVerse – University Search Platform
